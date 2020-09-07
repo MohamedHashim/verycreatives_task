@@ -14,8 +14,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.viewModel.moviesListLiveData.observe(this) {if(it.isNotEmpty()) response.text = it[0].overview }
-        this.viewModel.toastLiveData.observe(this) {Toast.makeText(this,it.toString(),Toast.LENGTH_SHORT) }
+        this.viewModel.moviesListLiveData.observe(this) {
+            if (it.isNotEmpty()) response.text = it[0].overview
+        }
+        this.viewModel.toastLiveData.observe(this) {
+            Toast.makeText(
+                this,
+                it.toString(),
+                Toast.LENGTH_SHORT
+            )
+        }
 
     }
 }
