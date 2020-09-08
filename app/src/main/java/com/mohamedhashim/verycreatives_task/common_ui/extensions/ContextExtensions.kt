@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 /**
  * Created by Mohamed Hashim on 9/8/2020.
@@ -14,4 +15,10 @@ fun Context.toast(message: String) =
 fun hidActionBar(activity: AppCompatActivity) {
     activity.requestWindowFeature(Window.FEATURE_NO_TITLE)
     activity.supportActionBar?.hide()
+}
+
+fun initToolbar(toolbar: Toolbar, activity: AppCompatActivity) {
+    activity.setSupportActionBar(toolbar)
+    activity.supportActionBar?.title = ""
+    activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 }

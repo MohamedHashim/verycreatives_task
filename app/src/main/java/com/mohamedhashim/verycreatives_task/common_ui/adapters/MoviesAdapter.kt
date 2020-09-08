@@ -6,13 +6,13 @@ import com.mohamedhashim.verycreatives_task.common_ui.viewholders.MoviesViewHold
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.skydoves.baserecyclerviewadapter.BaseAdapter
 import com.skydoves.baserecyclerviewadapter.SectionRow
-import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * Created by Mohamed Hashim on 9/8/2020.
  */
-class MoviesAdapter : BaseAdapter() {
+class MoviesAdapter(
+    private val delegate: MoviesViewHolder.Delegate
+) : BaseAdapter() {
 
     init {
         addSection(ArrayList<Movie>())
@@ -26,5 +26,5 @@ class MoviesAdapter : BaseAdapter() {
 
     override fun layout(sectionRow: SectionRow) = R.layout.item_movie
 
-    override fun viewHolder(layout: Int, view: View) = MoviesViewHolder(view)
+    override fun viewHolder(layout: Int, view: View) = MoviesViewHolder(view, delegate)
 }

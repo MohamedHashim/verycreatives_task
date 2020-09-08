@@ -10,5 +10,8 @@
     <string name="arrow">right arrow</string>
     <string name="poster_image">poster image</string>
     <string name="star">star</string>
+    <string name="base_background">Movie background image</string>
+    <string name="overview">Overview</string>
+    <string name="movie_key">movie</string>
 
 </resources>
