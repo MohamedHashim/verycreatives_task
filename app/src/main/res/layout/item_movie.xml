@@ -12,6 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
         android:layout_marginBottom="@dimen/margin_10">
 
         <androidx.cardview.widget.CardView
@@ -20,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_5"
             android:layout_marginEnd="@dimen/margin_5"
-            android:background="@color/white"
             app:cardCornerRadius="@dimen/corner_radius_25"
             app:cardElevation="@dimen/elevation_5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,11 +82,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_275"
                     android:layout_gravity="bottom"
-                    android:scaleType="fitXY"
                     android:layout_marginTop="@dimen/margin_15"
                     android:background="@drawable/poster_rounded_shape"
                     android:contentDescription="@string/poster_image"
-                    android:src="@color/blue" />
+                    android:scaleType="fitXY" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

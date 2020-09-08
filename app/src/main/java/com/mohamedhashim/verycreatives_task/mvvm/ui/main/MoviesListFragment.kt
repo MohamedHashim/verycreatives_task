@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.observe
 import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.common_ui.adapters.MoviesAdapter
+import com.mohamedhashim.verycreatives_task.common_ui.extensions.toast
 import com.mohamedhashim.verycreatives_task.databinding.FragmentMoviesListBinding
 import com.mohamedhashim.verycreatives_task.mvvm.base.DatabindingFragment
 import com.skydoves.baserecyclerviewadapter.RecyclerViewPaginator
@@ -36,24 +38,24 @@ class MoviesListFragment : DatabindingFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeUI()
-//        observeMessages()
+        loadMore(page = 1)
+        observeMessages()
     }
 
     private fun initializeUI() {
         RecyclerViewPaginator(
             recyclerView = recyclerView,
             isLoading = { false },
-            loadMore = { null },
+            loadMore = { loadMore(it) },
             onLast = { false }
-        )
+        ).apply {
+            threshold = 4
+            currentPage = 1
+        }
     }
 
-//    private fun observeMessages() =
-//        this.viewModel.toastLiveData.observe(this) {
-//            Toast.makeText(
-//                this,
-//                it.toString(),
-//                Toast.LENGTH_SHORT
-//            )
-//        }
+    private fun loadMore(page: Int) = this.viewModel.postMoviePage(page)
+
+    private fun observeMessages() =
+        this.viewModel.toastLiveData.observe(this) { context?.toast(it) }
 }

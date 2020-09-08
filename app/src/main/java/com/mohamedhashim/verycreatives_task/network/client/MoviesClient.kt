@@ -11,8 +11,9 @@ import com.mohamedhashim.verycreatives_task.network.transform
 class MoviesClient(private val service: MoviesService) {
 
     fun fetchPopularMovies(
+        page: Int,
         onResult: (response: ApiResponse<PopularMoviesResponse>) -> Unit
     ) {
-        this.service.fetchPopularMovies().transform(onResult)
+        this.service.fetchPopularMovies(page).transform(onResult)
     }
 }

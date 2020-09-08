@@ -15,21 +15,23 @@ import kotlinx.coroutines.withContext
 class MoviesRepository constructor(
     private val movieClient: MoviesClient
 ) {
-    suspend fun loadPopularMovies(error: (String) -> Unit) = withContext(Dispatchers.IO) {
-        val liveData = MutableLiveData<List<Movie>>()
-        var movies = emptyList<Movie>()
-        movieClient.fetchPopularMovies { response ->
-            when (response) {
-                is ApiResponse.Success -> {
-                    response.data?.let { data ->
-                        movies = data.results
-                        liveData.apply { postValue(movies) }
+    suspend fun loadPopularMovies(page: Int, error: (String) -> Unit) =
+        withContext(Dispatchers.IO) {
+            val liveData = MutableLiveData<List<Movie>>()
+            var movies = emptyList<Movie>()
+            movieClient.fetchPopularMovies(page) { response ->
+                when (response) {
+                    is ApiResponse.Success -> {
+                        response.data?.let { data ->
+                            movies = data.results
+                            movies.forEach { it.page = page }
+                            liveData.apply { postValue(movies) }
+                        }
                     }
+                    is ApiResponse.Failure.Error -> error(response.message())
+                    is ApiResponse.Failure.Exception -> error(response.message())
                 }
-                is ApiResponse.Failure.Error -> error(response.message())
-                is ApiResponse.Failure.Exception -> error(response.message())
             }
+            liveData.apply { postValue(movies) }
         }
-        liveData.apply { postValue(movies) }
-    }
 }
