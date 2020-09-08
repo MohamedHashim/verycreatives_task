@@ -13,17 +13,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        this.viewModel.moviesListLiveData.observe(this) {
-            if (it.isNotEmpty()) response.text = it[0].overview
-        }
-        this.viewModel.toastLiveData.observe(this) {
-            Toast.makeText(
-                this,
-                it.toString(),
-                Toast.LENGTH_SHORT
-            )
-        }
-
     }
 }

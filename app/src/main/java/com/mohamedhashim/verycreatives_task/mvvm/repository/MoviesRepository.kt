@@ -2,7 +2,7 @@ package com.mohamedhashim.verycreatives_task.mvvm.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.mohamedhashim.verycreatives_task.ApiResponse
-import com.mohamedhashim.verycreatives_task.data.entities.PopularMovie
+import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.network.client.MoviesClient
 import com.mohamedhashim.verycreatives_task.network.message
 import kotlinx.coroutines.Dispatchers
@@ -16,8 +16,8 @@ class MoviesRepository constructor(
     private val movieClient: MoviesClient
 ) {
     suspend fun loadPopularMovies(error: (String) -> Unit) = withContext(Dispatchers.IO) {
-        val liveData = MutableLiveData<List<PopularMovie>>()
-        var movies = emptyList<PopularMovie>()
+        val liveData = MutableLiveData<List<Movie>>()
+        var movies = emptyList<Movie>()
         movieClient.fetchPopularMovies { response ->
             when (response) {
                 is ApiResponse.Success -> {

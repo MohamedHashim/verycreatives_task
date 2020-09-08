@@ -2,7 +2,7 @@ package com.mohamedhashim.verycreatives_task.mvvm.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.mohamedhashim.verycreatives_task.data.entities.PopularMovie
+import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.mvvm.base.LiveCoroutinesViewModel
 import com.mohamedhashim.verycreatives_task.mvvm.repository.MoviesRepository
 
@@ -13,7 +13,7 @@ class MainViewModel constructor(
     private val moviesRepository: MoviesRepository
 ) : LiveCoroutinesViewModel() {
 
-    val moviesListLiveData: LiveData<List<PopularMovie>>
+    val moviesListLiveData: LiveData<List<Movie>>
     val toastLiveData: MutableLiveData<String> = MutableLiveData()
 
     init {

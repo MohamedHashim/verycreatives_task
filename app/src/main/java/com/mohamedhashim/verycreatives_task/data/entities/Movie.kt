@@ -3,7 +3,7 @@ package com.mohamedhashim.verycreatives_task.data.entities
 /**
  * Created by Mohamed Hashim on 9/7/2020.
  */
-class PopularMovie(
+class Movie(
     val poster_path: String,
     val adult: Boolean,
     val overview: String,

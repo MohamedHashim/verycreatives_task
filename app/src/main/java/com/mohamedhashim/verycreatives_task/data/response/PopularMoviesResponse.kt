@@ -1,6 +1,6 @@
 package com.mohamedhashim.verycreatives_task.data.response
 
-import com.mohamedhashim.verycreatives_task.data.entities.PopularMovie
+import com.mohamedhashim.verycreatives_task.data.entities.Movie
 
 /**
  * Created by Mohamed Hashim on 9/7/2020.
@@ -8,7 +8,7 @@ import com.mohamedhashim.verycreatives_task.data.entities.PopularMovie
 
 class PopularMoviesResponse(
     val page: Int,
-    val results: List<PopularMovie>,
+    val results: List<Movie>,
     val total_results: Int,
     val total_pages: Int
 )
