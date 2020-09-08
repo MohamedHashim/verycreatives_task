@@ -10,13 +10,13 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/item_movie_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_10"
         android:layout_marginBottom="@dimen/margin_10">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/item_movie_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_5"

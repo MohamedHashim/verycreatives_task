@@ -1,8 +1,12 @@
 package com.mohamedhashim.verycreatives_task.data.entities
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * Created by Mohamed Hashim on 9/7/2020.
  */
+@Parcelize
 class Movie(
     var page: Int,
     var poster_path: String,
@@ -19,4 +23,4 @@ class Movie(
     var vote_count: Int,
     var video: Boolean,
     var vote_average: Float
-)
+):Parcelable

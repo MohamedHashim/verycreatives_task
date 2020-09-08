@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.common_ui.adapters.MoviesAdapter
 import com.mohamedhashim.verycreatives_task.common_ui.extensions.toast
+import com.mohamedhashim.verycreatives_task.common_ui.viewholders.MoviesViewHolder
+import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.databinding.FragmentMoviesListBinding
 import com.mohamedhashim.verycreatives_task.mvvm.base.DatabindingFragment
 import com.skydoves.baserecyclerviewadapter.RecyclerViewPaginator
@@ -17,7 +20,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 /**
  * Created by Mohamed Hashim on 9/8/2020.
  */
-class MoviesListFragment : DatabindingFragment() {
+class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
 
     private val viewModel: MainViewModel by viewModel()
 
@@ -31,7 +34,7 @@ class MoviesListFragment : DatabindingFragment() {
         ).apply {
             viewModel = this@MoviesListFragment.viewModel
             lifecycleOwner = this@MoviesListFragment
-            adapter = MoviesAdapter()
+            adapter = MoviesAdapter(this@MoviesListFragment)
         }.root
     }
 
@@ -58,4 +61,11 @@ class MoviesListFragment : DatabindingFragment() {
 
     private fun observeMessages() =
         this.viewModel.toastLiveData.observe(this) { context?.toast(it) }
+
+    override fun onItemClick(view: View, movie: Movie) {
+        findNavController().navigate(
+            R.id.actionMovieDetails,
+            MainViewModel.createArguments(movie)
+        )
+    }
 }

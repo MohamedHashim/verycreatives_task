@@ -1,5 +1,6 @@
 package com.mohamedhashim.verycreatives_task.mvvm.ui.main
 
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
@@ -28,4 +29,13 @@ class MainViewModel constructor(
     }
 
     fun postMoviePage(page: Int) = this.moviePageLiveData.postValue(page)
+
+    companion object {
+        private const val movieKey = "movie"
+        fun createArguments(movie: Movie): Bundle {
+            val bundle = Bundle()
+            bundle.putParcelable(movieKey, movie)
+            return bundle
+        }
+    }
 }

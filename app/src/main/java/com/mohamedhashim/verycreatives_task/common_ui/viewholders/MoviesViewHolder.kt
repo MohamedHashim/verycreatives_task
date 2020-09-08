@@ -2,14 +2,24 @@ package com.mohamedhashim.verycreatives_task.common_ui.viewholders
 
 import android.view.View
 import androidx.core.view.ViewCompat
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.databinding.ItemMovieBinding
+import com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel
 import com.skydoves.baserecyclerviewadapter.BaseViewHolder
 
 /**
  * Created by Mohamed Hashim on 9/8/2020.
  */
-class MoviesViewHolder(view: View) : BaseViewHolder(view) {
+class MoviesViewHolder(
+    view: View,
+    private val delegate: Delegate
+) : BaseViewHolder(view) {
+
+    interface Delegate {
+        fun onItemClick(view: View, movie: Movie)
+    }
 
     private lateinit var movie: Movie
     private val binding by bindings<ItemMovieBinding>(view)
@@ -25,9 +35,7 @@ class MoviesViewHolder(view: View) : BaseViewHolder(view) {
         }
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-    }
+    override fun onClick(v: View?) = delegate.onItemClick(binding.itemMovieContainer, movie)
 
     override fun onLongClick(v: View?): Boolean {
         TODO("Not yet implemented")

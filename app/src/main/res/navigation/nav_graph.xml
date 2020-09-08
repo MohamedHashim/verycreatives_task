@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/movies_list_fragment">
+
+    <fragment
+        android:id="@+id/movies_list_fragment"
+        android:name="com.mohamedhashim.verycreatives_task.mvvm.ui.main.MoviesListFragment"
+        android:label="Movies List Fragment"
+        tools:layout="@layout/fragment_movies_list">
+        <action
+            android:id="@+id/actionMovieDetails"
+            app:destination="@id/MovieDetailsFragment" />
+        <action
+            android:id="@+id/action_movies_list_fragment_to_MovieDetailsFragment"
+            app:destination="@id/MovieDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MovieDetailsFragment"
+        android:name="com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsFragment"
+        android:label="work_details_fragment"
+        tools:layout="@layout/fragment_movie_details" />
+</navigation>
