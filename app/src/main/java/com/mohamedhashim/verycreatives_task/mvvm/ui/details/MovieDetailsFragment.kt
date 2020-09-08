@@ -25,16 +25,13 @@ class MovieDetailsFragment : DatabindingFragment() {
         return binding<FragmentMovieDetailsBinding>(
             inflater, R.layout.fragment_movie_details, container
         ).apply {
-            viewModel = this@MovieDetailsFragment.viewModel
             lifecycleOwner = this@MovieDetailsFragment
+            movie = requireArguments().get(getString(R.string.movie_key)) as Movie
         }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.loadArguments(arguments)
-        val movie = requireArguments().get("movie") as Movie
-        tv.text = movie.overview
     }
 }

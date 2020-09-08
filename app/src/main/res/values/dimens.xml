@@ -10,4 +10,5 @@
     <dimen name="text_size_16">16sp</dimen>
     <dimen name="elevation_5">5dp</dimen>
     <dimen name="height_275">275dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
 </resources>
