@@ -2,6 +2,7 @@ package com.mohamedhashim.verycreatives_task
 
 import android.app.Application
 import com.mohamedhashim.verycreatives_task.mvvm.di.networkModule
+import com.mohamedhashim.verycreatives_task.mvvm.di.persistenceModule
 import com.mohamedhashim.verycreatives_task.mvvm.di.repositoryModule
 import com.mohamedhashim.verycreatives_task.mvvm.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -19,6 +20,7 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             modules(networkModule)
+            modules(persistenceModule)
             modules(viewModelModule)
             modules(repositoryModule)
         }
