@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.mohamedhashim.verycreatives_task.R
+import com.mohamedhashim.verycreatives_task.common_ui.extensions.initToolbar
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.databinding.FragmentMovieDetailsBinding
 import com.mohamedhashim.verycreatives_task.mvvm.base.DatabindingFragment
@@ -32,6 +34,7 @@ class MovieDetailsFragment : DatabindingFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(toolbar, activity as AppCompatActivity)
         viewModel.loadArguments(arguments)
     }
 }

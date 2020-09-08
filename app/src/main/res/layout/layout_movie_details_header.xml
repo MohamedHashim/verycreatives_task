@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -33,7 +34,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:gravity="center"
-            android:textSize="14sp"
+            android:textSize="@dimen/tv_size_14"
+            app:bindReleaseDate="@{movie}"
             tools:text="Release Date :" />
+
+        <RatingBar
+            android:id="@+id/detail_header_star"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:rating="@{movie.vote_average / 2}"
+            android:theme="@style/RatingBar"
+            tools:rating="3.5f" />
     </LinearLayout>
 </layout>

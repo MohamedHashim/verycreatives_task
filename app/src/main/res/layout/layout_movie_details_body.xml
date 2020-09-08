@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
             android:text="@string/overview"
-            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -31,7 +30,7 @@
             android:layout_marginTop="@dimen/margin_12"
             android:text="@{movie.overview}"
             android:textColor="@color/grey"
-            android:textSize="14sp"
-            tools:text="Summary" />
+            android:textSize="@dimen/tv_size_14"
+            tools:text="@string/overview" />
     </LinearLayout>
 </layout>
