@@ -1,21 +1,70 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel"/>
+            type="com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hello"
-            android:layout_marginTop="50dp"/>
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_15"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_25"
+                android:text="@string/sort_question"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_20"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_5"
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_marginEnd="@dimen/margin_5"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:background="@drawable/background_yellow_rounded_shape"
+                android:elevation="@dimen/elevation_0"
+                android:text="@string/popular_movies_message"
+                android:textAllCaps="false"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/tv_size_14" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_5"
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_marginEnd="@dimen/margin_5"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:background="@drawable/background_yellow_rounded_shape"
+                android:elevation="@dimen/elevation_0"
+                android:text="@string/best_movies_message"
+                android:textAllCaps="false"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/tv_size_14" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:background="@drawable/background_yellow_rounded_shape"
+                android:elevation="@dimen/elevation_0"
+                android:text="@string/fav_movies_message"
+                android:textAllCaps="false"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/tv_size_14" />
+        </LinearLayout>
     </LinearLayout>
 </layout>

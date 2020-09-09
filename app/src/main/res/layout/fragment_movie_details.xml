@@ -66,7 +66,7 @@
                         android:singleLine="true"
                         android:text="@{movie.original_title}"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_16"
+                        android:textSize="@dimen/tv_size_16"
                         android:textStyle="bold"
                         tools:ignore="RtlSymmetry" />
                 </androidx.appcompat.widget.Toolbar>
