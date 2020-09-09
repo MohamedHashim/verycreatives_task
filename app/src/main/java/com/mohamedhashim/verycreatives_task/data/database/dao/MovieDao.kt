@@ -1,5 +1,6 @@
 package com.mohamedhashim.verycreatives_task.data.database.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 
@@ -17,4 +18,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM Movie WHERE favourite = '1'")
     fun getFavouriteMovieList(): List<Movie>
+
+    @Query("SELECT * FROM Movie WHERE favourite = '1'")
+    fun getFavouriteMovieLiveData(): LiveData<List<Movie>>
 }

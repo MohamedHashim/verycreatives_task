@@ -7,6 +7,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.common_ui.adapters.MoviesAdapter
+import com.mohamedhashim.verycreatives_task.common_ui.bindings.bindAdapterMovieList
 import com.mohamedhashim.verycreatives_task.common_ui.extensions.toast
 import com.mohamedhashim.verycreatives_task.common_ui.viewholders.MoviesViewHolder
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
@@ -24,6 +25,7 @@ class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
 
     private val viewModel: MainViewModel by viewModel()
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
+    private val adapterMovieList = MoviesAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,6 +97,10 @@ class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
                 true
             }
             R.id.favourite -> {
+                recyclerView.removeAllViewsInLayout()
+                this.viewModel.moviesListLiveData = this.viewModel.favouriteMoviesLiveData
+                this.adapterMovieList.addMovieList(this.viewModel.favouriteMoviesList)
+                bindAdapterMovieList(recyclerView, this.viewModel.favouriteMoviesList)
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.databinding.FragmentSortMoviesBinding
 import com.mohamedhashim.verycreatives_task.mvvm.base.DatabindingDialogFragment
-import kotlinx.android.synthetic.main.fragment_sort_movies.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
