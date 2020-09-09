@@ -2,6 +2,7 @@ package com.mohamedhashim.verycreatives_task.mvvm.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.mohamedhashim.verycreatives_task.ApiResponse
+import com.mohamedhashim.verycreatives_task.data.database.dao.MovieDao
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.network.client.MoviesClient
 import com.mohamedhashim.verycreatives_task.network.message
@@ -13,7 +14,8 @@ import kotlinx.coroutines.withContext
  */
 
 class MoviesRepository constructor(
-    private val movieClient: MoviesClient
+    private val movieClient: MoviesClient,
+    private val movieDao: MovieDao
 ) {
     suspend fun loadPopularMovies(page: Int, error: (String) -> Unit) =
         withContext(Dispatchers.IO) {
@@ -34,4 +36,28 @@ class MoviesRepository constructor(
             }
             liveData.apply { postValue(movies) }
         }
+
+    fun insertMovie(movie: Movie) {
+        movie.favourite = true
+        movieDao.insertFavouriteMovie(movie)
+    }
+
+    fun updateMovie(movie: Movie) {
+        movie.favourite = !movie.favourite
+        movieDao.updateMovie(movie)
+    }
+
+    private fun getFavouriteMoviesList() = movieDao.getFavouriteMovieList()
+
+    fun realMovie(oldMovie: Movie): Movie {
+        val movies = getFavouriteMoviesList()
+        var movie = oldMovie
+        for (item in movies) {
+            if (item.id == oldMovie.id && item.favourite) {
+                movie = item
+                break
+            }
+        }
+        return movie
+    }
 }

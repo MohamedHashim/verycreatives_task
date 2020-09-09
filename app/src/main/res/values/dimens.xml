@@ -12,4 +12,6 @@
     <dimen name="height_275">275dp</dimen>
     <dimen name="margin_12">12dp</dimen>
     <dimen name="tv_size_14">14sp</dimen>
+    <dimen name="margin_6">6dp</dimen>
+    <dimen name="width_35">35dp</dimen>
 </resources>

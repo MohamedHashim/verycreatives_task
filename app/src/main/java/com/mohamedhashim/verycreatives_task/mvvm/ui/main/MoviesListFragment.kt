@@ -13,6 +13,7 @@ import com.mohamedhashim.verycreatives_task.common_ui.viewholders.MoviesViewHold
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.databinding.FragmentMoviesListBinding
 import com.mohamedhashim.verycreatives_task.mvvm.base.DatabindingFragment
+import com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsViewModel
 import com.skydoves.baserecyclerviewadapter.RecyclerViewPaginator
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -23,6 +24,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
 
     private val viewModel: MainViewModel by viewModel()
+    private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,9 +65,11 @@ class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
         this.viewModel.toastLiveData.observe(this) { context?.toast(it) }
 
     override fun onItemClick(view: View, movie: Movie) {
+        val updatedMovie = this.movieDetailsViewModel.getUpdatedMovie(movie)
+
         findNavController().navigate(
             R.id.actionMovieDetails,
-            MainViewModel.createArguments(movie)
+            MainViewModel.createArguments(updatedMovie)
         )
     }
 }
