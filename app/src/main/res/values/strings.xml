@@ -5,8 +5,8 @@
     <string name="check_movies">Check these movies out!</string>
     <string name="favorite">favorite</string>
     <string name="content_description_favorite">favorite</string>
-    <string name="content_description_filter">filter</string>
-    <string name="filter">filter</string>
+    <string name="content_description_sort">sort</string>
+    <string name="sort">sort</string>
     <string name="arrow">right arrow</string>
     <string name="poster_image">poster image</string>
     <string name="star">star</string>
@@ -17,5 +17,9 @@
     <string name="favourite_btn">favourite button</string>
     <string name="removed_message">Removed from your favourite movies successfully</string>
     <string name="added_message">Added to your favourite movies successfully</string>
+    <string name="sort_question">In which order would you like to me to list the movies?</string>
+    <string name="popular_movies_message">The hot stuff!\nShow me the most popular movies!</string>
+    <string name="best_movies_message">Only the best!\nShow me the top rated movies!</string>
+    <string name="fav_movies_message">My faves!\nShow me my favourite movies!</string>
 
 </resources>

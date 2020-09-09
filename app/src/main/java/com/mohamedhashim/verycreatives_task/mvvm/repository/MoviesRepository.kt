@@ -47,7 +47,8 @@ class MoviesRepository constructor(
         movieDao.updateMovie(movie)
     }
 
-    private fun getFavouriteMoviesList() = movieDao.getFavouriteMovieList()
+    fun getFavouriteMoviesList() = movieDao.getFavouriteMovieList()
+    fun getFavouriteMoviesLiveData() = movieDao.getFavouriteMovieLiveData()
 
     fun realMovie(oldMovie: Movie): Movie {
         val movies = getFavouriteMoviesList()
