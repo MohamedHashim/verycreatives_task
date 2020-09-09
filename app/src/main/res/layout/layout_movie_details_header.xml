@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsViewModel" />
+
+        <variable
             name="movie"
             type="com.mohamedhashim.verycreatives_task.data.entities.Movie" />
     </data>
@@ -48,7 +52,12 @@
                 android:layout_height="@dimen/width_35"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_favourite" />
+                android:contentDescription="@string/favourite_btn"
+                android:focusable="true"
+                android:src="@drawable/ic_favourite"
+                app:clickListener="@{movie}"
+                app:observeFavourite="@{movie.favourite}"
+                app:updateDB="@{viewModel}" />
         </RelativeLayout>
 
         <RatingBar

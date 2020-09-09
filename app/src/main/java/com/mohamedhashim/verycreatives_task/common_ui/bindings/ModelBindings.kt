@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.common_ui.PosterPath.getBackdropPath
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
+import com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsFragment
+import com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsViewModel
 import com.skydoves.whatif.whatIfNotNull
 
 /**
@@ -41,4 +43,33 @@ private fun bindBackDrop(view: ImageView, path: String?, posterPath: String?) {
 @BindingAdapter("bindReleaseDate")
 fun bindReleaseDate(view: TextView, movie: Movie) {
     view.text = "Release Date : ${movie.release_date}"
+}
+
+@BindingAdapter("bindFavourite")
+fun bindFavourite(imageView: ImageView, favourite: Boolean) {
+    if (favourite) {
+        imageView.setImageDrawable(
+            ContextCompat.getDrawable(
+                imageView.context,
+                R.drawable.ic_favourited
+            )
+        )
+    } else {
+        imageView.setImageDrawable(
+            ContextCompat.getDrawable(imageView.context, R.drawable.ic_favourite)
+        )
+    }
+}
+
+@BindingAdapter("observeFavourite")
+fun observeFavourite(imageView: ImageView, favourite: Boolean) {
+    bindFavourite(imageView, favourite)
+}
+
+@BindingAdapter("clickListener", "updateDB")
+fun clickListener(imageView: ImageView, movie: Movie, viewModel: MovieDetailsViewModel) {
+    imageView.setOnClickListener {
+        bindFavourite(imageView, !movie.favourite)
+        viewModel.onClickedFavourite(movie)
+    }
 }

@@ -7,5 +7,5 @@ import org.koin.dsl.module
  * Created by Mohamed Hashim on 9/7/2020.
  */
 val repositoryModule = module {
-    single { MoviesRepository(get()) }
+    single { MoviesRepository(get(), get()) }
 }

@@ -20,4 +20,5 @@ val persistenceModule = module {
             .build()
     }
 
+    single { get<AppDatabase>().movieDao() }
 }

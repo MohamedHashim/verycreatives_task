@@ -14,5 +14,8 @@
     <string name="overview">Overview</string>
     <string name="movie_key">movie</string>
     <string name="database">Movies.db</string>
+    <string name="favourite_btn">favourite button</string>
+    <string name="removed_message">Removed from your favourite movies successfully</string>
+    <string name="added_message">Added to your favourite movies successfully</string>
 
 </resources>

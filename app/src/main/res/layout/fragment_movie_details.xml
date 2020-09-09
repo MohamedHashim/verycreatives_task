@@ -10,6 +10,10 @@
             type="com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsFragment" />
 
         <variable
+            name="viewModel"
+            type="com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsViewModel" />
+
+        <variable
             name="movie"
             type="com.mohamedhashim.verycreatives_task.data.entities.Movie" />
     </data>
@@ -83,7 +87,8 @@
 
                 <include
                     layout="@layout/layout_movie_details_header"
-                    app:movie="@{movie}" />
+                    app:movie="@{movie}"
+                    app:viewModel="@{viewModel}" />
 
                 <include
                     layout="@layout/layout_movie_details_body"
