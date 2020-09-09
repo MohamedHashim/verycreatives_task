@@ -5,8 +5,8 @@
     <string name="check_movies">Check these movies out!</string>
     <string name="favorite">favorite</string>
     <string name="content_description_favorite">favorite</string>
-    <string name="content_description_filter">filter</string>
-    <string name="filter">filter</string>
+    <string name="content_description_sort">sort</string>
+    <string name="sort">sort</string>
     <string name="arrow">right arrow</string>
     <string name="poster_image">poster image</string>
     <string name="star">star</string>
