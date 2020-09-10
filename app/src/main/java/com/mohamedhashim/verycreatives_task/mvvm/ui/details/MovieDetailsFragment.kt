@@ -43,6 +43,5 @@ class MovieDetailsFragment : DatabindingFragment() {
     }
 
     private fun observeMessages() =
-        this.viewModel.toastLiveData.observe(this) { context?.toast(getString(it)) }
-
+        this.viewModel.toastLiveData.observe(viewLifecycleOwner, { context?.toast(getString(it)) })
 }

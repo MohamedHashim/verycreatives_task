@@ -16,4 +16,11 @@ class MoviesClient(private val service: MoviesService) {
     ) {
         this.service.fetchPopularMovies(page).transform(onResult)
     }
+
+    fun fetchTopRatedMovies(
+        page: Int,
+        onResult: (response: ApiResponse<PopularMoviesResponse>) -> Unit
+    ) {
+        this.service.fetchTopRatedMovies(page).transform(onResult)
+    }
 }
