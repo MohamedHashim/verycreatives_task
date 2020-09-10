@@ -16,4 +16,5 @@
     <dimen name="corner_radius_25">25dp</dimen>
     <dimen name="width_35">35dp</dimen>
     <dimen name="height_275">275dp</dimen>
+    <dimen name="tv_size_30">30sp</dimen>
 </resources>

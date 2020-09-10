@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/movies_list_fragment">
+    app:startDestination="@+id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mohamedhashim.verycreatives_task.mvvm.ui.Splash.SplashFragment"
+        android:label="Blank"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_movies_list"
+            app:destination="@id/movies_list_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/movies_list_fragment"
@@ -16,6 +26,10 @@
         <action
             android:id="@+id/action_movies_list_fragment_to_MovieDetailsFragment"
             app:destination="@id/MovieDetailsFragment" />
+        <argument
+            android:name="idx"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -26,5 +40,9 @@
     <dialog
         android:id="@+id/sortMoviesFragment"
         android:name="com.mohamedhashim.verycreatives_task.mvvm.ui.main.SortMoviesFragment"
-        android:label="SortMoviesFragment" />
+        android:label="SortMoviesFragment">
+        <action
+            android:id="@+id/action_sortMoviesFragment_to_movies_list_fragment3"
+            app:destination="@id/movies_list_fragment"></action>
+    </dialog>
 </navigation>

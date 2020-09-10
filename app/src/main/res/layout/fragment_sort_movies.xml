@@ -1,10 +1,11 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="viewModel"
-            type="com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel" />
+            name="fragment"
+            type="com.mohamedhashim.verycreatives_task.mvvm.ui.main.SortMoviesFragment" />
     </data>
 
     <LinearLayout
@@ -39,7 +40,9 @@
                 android:text="@string/popular_movies_message"
                 android:textAllCaps="false"
                 android:textColor="@android:color/secondary_text_light"
-                android:textSize="@dimen/tv_size_14" />
+                android:textSize="@dimen/tv_size_14"
+                app:idx="@{1}"
+                app:showMovies="@{fragment}" />
 
             <Button
                 android:layout_width="match_parent"
@@ -53,7 +56,9 @@
                 android:text="@string/best_movies_message"
                 android:textAllCaps="false"
                 android:textColor="@android:color/secondary_text_light"
-                android:textSize="@dimen/tv_size_14" />
+                android:textSize="@dimen/tv_size_14"
+                app:idx="@{2}"
+                app:showMovies="@{fragment}" />
 
             <Button
                 android:layout_width="match_parent"
@@ -64,7 +69,9 @@
                 android:text="@string/fav_movies_message"
                 android:textAllCaps="false"
                 android:textColor="@android:color/secondary_text_light"
-                android:textSize="@dimen/tv_size_14" />
+                android:textSize="@dimen/tv_size_14"
+                app:idx="@{3}"
+                app:showMovies="@{fragment}" />
         </LinearLayout>
     </LinearLayout>
 </layout>

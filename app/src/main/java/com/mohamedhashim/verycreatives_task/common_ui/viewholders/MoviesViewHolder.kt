@@ -2,11 +2,8 @@ package com.mohamedhashim.verycreatives_task.common_ui.viewholders
 
 import android.view.View
 import androidx.core.view.ViewCompat
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.databinding.ItemMovieBinding
-import com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel
 import com.skydoves.baserecyclerviewadapter.BaseViewHolder
 
 /**

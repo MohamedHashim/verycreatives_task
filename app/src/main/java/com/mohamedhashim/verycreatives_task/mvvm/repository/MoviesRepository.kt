@@ -37,6 +37,26 @@ class MoviesRepository constructor(
             liveData.apply { postValue(movies) }
         }
 
+    suspend fun loadTopRatedMovies(page: Int, error: (String) -> Unit) =
+        withContext(Dispatchers.IO) {
+            val liveData = MutableLiveData<List<Movie>>()
+            var movies = emptyList<Movie>()
+            movieClient.fetchTopRatedMovies(page) { response ->
+                when (response) {
+                    is ApiResponse.Success -> {
+                        response.data?.let { data ->
+                            movies = data.results
+                            movies.forEach { it.page = page }
+                            liveData.apply { postValue(movies) }
+                        }
+                    }
+                    is ApiResponse.Failure.Error -> error(response.message())
+                    is ApiResponse.Failure.Exception -> error(response.message())
+                }
+            }
+            liveData.apply { postValue(movies) }
+        }
+
     fun insertMovie(movie: Movie) {
         movie.favourite = true
         movieDao.insertFavouriteMovie(movie)

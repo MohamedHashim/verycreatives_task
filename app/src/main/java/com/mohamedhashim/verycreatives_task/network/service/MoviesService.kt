@@ -12,4 +12,7 @@ interface MoviesService {
 
     @GET("movie/popular")
     fun fetchPopularMovies(@Query("page") page: Int): Call<PopularMoviesResponse>
+
+    @GET("movie/top_rated")
+    fun fetchTopRatedMovies(@Query("page") page: Int): Call<PopularMoviesResponse>
 }

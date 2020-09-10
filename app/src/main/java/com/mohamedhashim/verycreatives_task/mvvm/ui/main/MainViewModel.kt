@@ -16,8 +16,10 @@ class MainViewModel constructor(
 ) : LiveCoroutinesViewModel() {
 
     var moviesListLiveData: LiveData<List<Movie>>
+    var topRatedMoviesListLiveData: LiveData<List<Movie>>
     val favouriteMoviesList: List<Movie>
     val favouriteMoviesLiveData: LiveData<List<Movie>>
+    val popularMoviesLiveData: LiveData<List<Movie>>
     private var moviePageLiveData: MutableLiveData<Int> = MutableLiveData()
     val toastLiveData: MutableLiveData<String> = MutableLiveData()
 
@@ -28,9 +30,14 @@ class MainViewModel constructor(
                 this.moviesRepository.loadPopularMovies(page) { this.toastLiveData.postValue(it) }
             }
         }
+        this.topRatedMoviesListLiveData = this.moviePageLiveData.switchMap { page ->
+            launchOnViewModelScope {
+                this.moviesRepository.loadTopRatedMovies(page) { this.toastLiveData.postValue(it) }
+            }
+        }
 
+        this.popularMoviesLiveData = this.moviesListLiveData
         this.favouriteMoviesLiveData = this.moviesRepository.getFavouriteMoviesLiveData()
-
         this.favouriteMoviesList = this.moviesRepository.getFavouriteMoviesList()
     }
 
