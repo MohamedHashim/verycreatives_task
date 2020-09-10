@@ -1,23 +1,25 @@
 # Verycreatives Movies App task
 
-A movies app showing the popular movies and Add to favourite list.
+A movies app showing the popular and top rated movies with the ability of adding any movie in the favourite list.
 
 App Features
 ---------------
 
-1- Movies List Feature
+1- Popular Movies List Feature
 
-2- Movies Details Feature
+2- TopRated Movies List Feature
 
-3- Add Movie to the favourite list Feature
+3- Movies Details Feature
 
-4- Save all favourite movies in Room database
+4- Save Movies to the favourite list via Room database
+
+5- Show all favourite movies
 
 App Architecture
 --------------
 
 
-Movies Inc app is implemented in Kotlin and the software architectural pattern is MVVM
+Movies app is implemented in Kotlin and the software architectural pattern is MVVM
 
 We care to implement it in clean architecture which separates the application code into layers and these layers define the Separation of Concerns (SOC) inside the codebase
 
