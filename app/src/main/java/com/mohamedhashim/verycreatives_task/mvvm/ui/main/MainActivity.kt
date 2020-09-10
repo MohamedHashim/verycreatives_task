@@ -8,8 +8,8 @@ import com.mohamedhashim.verycreatives_task.common_ui.extensions.hidActionBar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         hidActionBar(this)
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 

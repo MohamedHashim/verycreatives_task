@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.databinding.FragmentSortMoviesBinding
 import com.mohamedhashim.verycreatives_task.mvvm.base.DatabindingDialogFragment
-import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  * Created by Mohamed Hashim on 9/9/2020.
  */
 class SortMoviesFragment : DatabindingDialogFragment() {
-    private val viewModel: MainViewModel by viewModel()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,7 +19,7 @@ class SortMoviesFragment : DatabindingDialogFragment() {
         return binding<FragmentSortMoviesBinding>(
             inflater, R.layout.fragment_sort_movies, container
         ).apply {
-            viewModel = this@SortMoviesFragment.viewModel
+            fragment = this@SortMoviesFragment
             lifecycleOwner = this@SortMoviesFragment
         }.root
     }

@@ -1,16 +1,19 @@
 package com.mohamedhashim.verycreatives_task.common_ui.bindings
 
 import android.annotation.SuppressLint
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.bumptech.glide.Glide
 import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.common_ui.PosterPath.getBackdropPath
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
-import com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsFragment
 import com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsViewModel
+import com.mohamedhashim.verycreatives_task.mvvm.ui.main.SortMoviesFragmentDirections
 import com.skydoves.whatif.whatIfNotNull
 
 /**
@@ -71,5 +74,13 @@ fun clickListener(imageView: ImageView, movie: Movie, viewModel: MovieDetailsVie
     imageView.setOnClickListener {
         bindFavourite(imageView, !movie.favourite)
         viewModel.onClickedFavourite(movie)
+    }
+}
+
+@BindingAdapter("showMovies", "idx")
+fun showMovies(btn: Button, fragment: Fragment, idx: Int) {
+    btn.setOnClickListener {
+        val action = SortMoviesFragmentDirections.actionSortMoviesFragmentToMoviesListFragment3(idx)
+        findNavController(fragment).navigate(action)
     }
 }
