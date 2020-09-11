@@ -21,5 +21,7 @@
     <string name="popular_movies_message">The hot stuff!\nShow me the most popular movies!</string>
     <string name="best_movies_message">Only the best!\nShow me the top rated movies!</string>
     <string name="fav_movies_message">My faves!\nShow me my favourite movies!</string>
+    <string name="home">home</string>
+    <string name="check_fav_movies">These are your favourite movies!</string>
 
 </resources>

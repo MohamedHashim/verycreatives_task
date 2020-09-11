@@ -5,7 +5,7 @@
 
         <variable
             name="fragment"
-            type="com.mohamedhashim.verycreatives_task.mvvm.ui.main.SortMoviesFragment" />
+            type="com.mohamedhashim.verycreatives_task.mvvm.ui.main.sort.SortMoviesFragment" />
     </data>
 
     <LinearLayout

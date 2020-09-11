@@ -13,7 +13,7 @@ import com.mohamedhashim.verycreatives_task.R
 import com.mohamedhashim.verycreatives_task.common_ui.PosterPath.getBackdropPath
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
 import com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsViewModel
-import com.mohamedhashim.verycreatives_task.mvvm.ui.main.SortMoviesFragmentDirections
+import com.mohamedhashim.verycreatives_task.mvvm.ui.main.sort.SortMoviesFragmentDirections
 import com.skydoves.whatif.whatIfNotNull
 
 /**

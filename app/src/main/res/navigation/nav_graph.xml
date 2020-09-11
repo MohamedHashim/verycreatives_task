@@ -26,6 +26,12 @@
         <action
             android:id="@+id/action_movies_list_fragment_to_MovieDetailsFragment"
             app:destination="@id/MovieDetailsFragment" />
+        <action
+            android:id="@+id/action_movies_list_fragment_to_favouriteMoviesListFragment"
+            app:destination="@id/favouriteMoviesListFragment" />
+        <action
+            android:id="@+id/action_movies_list_fragment_to_favouriteMoviesListFragment2"
+            app:destination="@id/favouriteMoviesListFragment" />
         <argument
             android:name="idx"
             android:defaultValue="0"
@@ -39,10 +45,18 @@
         tools:layout="@layout/fragment_movie_details" />
     <dialog
         android:id="@+id/sortMoviesFragment"
-        android:name="com.mohamedhashim.verycreatives_task.mvvm.ui.main.SortMoviesFragment"
+        android:name="com.mohamedhashim.verycreatives_task.mvvm.ui.main.sort.SortMoviesFragment"
         android:label="SortMoviesFragment">
         <action
             android:id="@+id/action_sortMoviesFragment_to_movies_list_fragment3"
-            app:destination="@id/movies_list_fragment"></action>
+            app:destination="@id/movies_list_fragment" />
     </dialog>
+    <fragment
+        android:id="@+id/favouriteMoviesListFragment"
+        android:name="com.mohamedhashim.verycreatives_task.mvvm.ui.main.favourite.FavouriteMoviesListFragment"
+        android:label="FavouriteMoviesListFragment">
+        <action
+            android:id="@+id/action_favouriteMoviesListFragment_to_MovieDetailsFragment"
+            app:destination="@id/MovieDetailsFragment" />
+    </fragment>
 </navigation>

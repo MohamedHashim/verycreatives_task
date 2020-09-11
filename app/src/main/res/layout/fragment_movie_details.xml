@@ -62,7 +62,6 @@
                         android:ellipsize="end"
                         android:maxEms="20"
                         android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
                         android:singleLine="true"
                         android:text="@{movie.original_title}"
                         android:textColor="@color/white"

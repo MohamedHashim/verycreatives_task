@@ -17,7 +17,6 @@ class MainViewModel constructor(
 
     var moviesListLiveData: LiveData<List<Movie>>
     var topRatedMoviesListLiveData: LiveData<List<Movie>>
-    val favouriteMoviesList: List<Movie>
     val favouriteMoviesLiveData: LiveData<List<Movie>>
     val popularMoviesLiveData: LiveData<List<Movie>>
     private var moviePageLiveData: MutableLiveData<Int> = MutableLiveData()
@@ -38,10 +37,10 @@ class MainViewModel constructor(
 
         this.popularMoviesLiveData = this.moviesListLiveData
         this.favouriteMoviesLiveData = this.moviesRepository.getFavouriteMoviesLiveData()
-        this.favouriteMoviesList = this.moviesRepository.getFavouriteMoviesList()
     }
 
     fun postMoviePage(page: Int) = this.moviePageLiveData.postValue(page)
+    fun getFavouriteMovieList() = this.moviesRepository.getFavouriteMoviesList()
 
     companion object {
         private const val movieKey = "movie"

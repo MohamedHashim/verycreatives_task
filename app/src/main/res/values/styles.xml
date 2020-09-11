@@ -14,10 +14,6 @@
         <item name="colorControlActivated">@color/duskYellow</item>
     </style>
 
-    <style name="CollapsedExpandedTitleText" parent="AppTheme">
-        <item name="android:textColor">@android:color/transparent</item>
-    </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 </resources>

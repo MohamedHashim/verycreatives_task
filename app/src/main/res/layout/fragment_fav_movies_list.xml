@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.mohamedhashim.verycreatives_task.common_ui.adapters.MovieFavouriteAdapter" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_fav_header" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fav_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="5dp"
+            app:adapter="@{adapter}"
+            app:adapterFavMovieList="@{viewModel.favouriteMoviesLiveData}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
+            tools:listitem="@layout/item_movie" />
+    </LinearLayout>
+</layout>

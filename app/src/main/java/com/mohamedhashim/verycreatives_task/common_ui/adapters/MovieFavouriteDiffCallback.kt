@@ -6,7 +6,7 @@ import com.mohamedhashim.verycreatives_task.data.entities.Movie
 /**
  * Created by Mohamed Hashim on 9/9/2020.
  */
-class MovieDiffCallback(
+class MovieFavouriteDiffCallback(
     private val oldList: List<Movie>,
     private val newList: List<Movie>
 ) : DiffUtil.Callback() {

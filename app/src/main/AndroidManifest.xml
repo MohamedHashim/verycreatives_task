@@ -8,12 +8,13 @@
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@drawable/ic_logo"
         android:label="@string/verycreatives"
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvvm.ui.main.MainActivity">
+        <activity android:name=".mvvm.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

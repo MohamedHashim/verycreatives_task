@@ -1,69 +1,60 @@
-package com.mohamedhashim.verycreatives_task.mvvm.ui.main
+package com.mohamedhashim.verycreatives_task.mvvm.ui.main.favourite
 
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.mohamedhashim.verycreatives_task.R
-import com.mohamedhashim.verycreatives_task.common_ui.adapters.MoviesAdapter
-import com.mohamedhashim.verycreatives_task.common_ui.extensions.*
+import com.mohamedhashim.verycreatives_task.common_ui.adapters.MovieFavouriteAdapter
+import com.mohamedhashim.verycreatives_task.common_ui.extensions.showFavouriteMovies
+import com.mohamedhashim.verycreatives_task.common_ui.extensions.toast
 import com.mohamedhashim.verycreatives_task.common_ui.viewholders.MoviesViewHolder
 import com.mohamedhashim.verycreatives_task.data.entities.Movie
-import com.mohamedhashim.verycreatives_task.databinding.FragmentMoviesListBinding
+import com.mohamedhashim.verycreatives_task.databinding.FragmentFavMoviesListBinding
 import com.mohamedhashim.verycreatives_task.mvvm.base.DatabindingFragment
 import com.mohamedhashim.verycreatives_task.mvvm.ui.details.MovieDetailsViewModel
+import com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel
 import com.skydoves.baserecyclerviewadapter.RecyclerViewPaginator
-import kotlinx.android.synthetic.main.fragment_movies_list.*
+import kotlinx.android.synthetic.main.fragment_fav_movies_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
- * Created by Mohamed Hashim on 9/8/2020.
+ * Created by Mohamed Hashim on 9/9\/2020.
  */
-class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
-
+class FavouriteMoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
     private val viewModel: MainViewModel by viewModel()
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
-    private val adapterMovieList = MoviesAdapter(this)
-    private val args: MoviesListFragmentArgs by navArgs()
+    private val adapterMovieList = MovieFavouriteAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return binding<FragmentMoviesListBinding>(
-            inflater, R.layout.fragment_movies_list, container
+        return binding<FragmentFavMoviesListBinding>(
+            inflater, R.layout.fragment_fav_movies_list, container
         ).apply {
-            viewModel = this@MoviesListFragment.viewModel
-            lifecycleOwner = this@MoviesListFragment
-            adapter = MoviesAdapter(this@MoviesListFragment)
+            viewModel = this@FavouriteMoviesListFragment.viewModel
+            lifecycleOwner = this@FavouriteMoviesListFragment
+            adapter = MovieFavouriteAdapter(this@FavouriteMoviesListFragment)
         }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeUI()
-        loadMore(page = 1)
         observeMessages()
-        sortMoviesHandler()
-        if (!hasInternetConnected(view.context)!!)
-            showFavMovies(recyclerView, this.viewModel, this.adapterMovieList)
+        showFavouriteMovies(fav_recyclerView, this.viewModel, this.adapterMovieList)
     }
 
     private fun initializeUI() {
         RecyclerViewPaginator(
-            recyclerView = recyclerView,
+            recyclerView = fav_recyclerView,
             isLoading = { false },
-            loadMore = { loadMore(it) },
+            loadMore = { null },
             onLast = { false }
-        ).apply {
-            threshold = 4
-            currentPage = 1
-        }
+        )
     }
-
-    private fun loadMore(page: Int) = this.viewModel.postMoviePage(page)
 
     private fun observeMessages() =
         this.viewModel.toastLiveData.observe(viewLifecycleOwner, { context?.toast(it) })
@@ -71,7 +62,7 @@ class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
     override fun onItemClick(view: View, movie: Movie) {
         val updatedMovie = this.movieDetailsViewModel.getUpdatedMovie(movie)
         findNavController().navigate(
-            R.id.actionMovieDetails,
+            R.id.action_favouriteMoviesListFragment_to_MovieDetailsFragment,
             MainViewModel.createArguments(updatedMovie)
         )
     }
@@ -79,7 +70,6 @@ class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).setSupportActionBar(view?.findViewById(R.id.topAppBar))
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,35 +78,17 @@ class MoviesListFragment : DatabindingFragment(), MoviesViewHolder.Delegate {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.top_app_bar, menu)
+        inflater.inflate(R.menu.fav_app_bar, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.more -> {
-                findNavController().navigate(R.id.sortMoviesFragment)
-                true
-            }
-            R.id.favourite -> {
-                findNavController().navigate(R.id.action_movies_list_fragment_to_favouriteMoviesListFragment)
+            R.id.home -> {
+                findNavController().navigate(R.id.movies_list_fragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun sortMoviesHandler() {
-        when (args.idx) {
-            1 -> {
-                showPopularMovies(recyclerView, this.viewModel, this.adapterMovieList)
-            }
-            2 -> {
-                showTopRatedMovies(recyclerView, this.viewModel, this.adapterMovieList)
-            }
-            3 -> {
-                showFavMovies(recyclerView, this.viewModel, this.adapterMovieList)
-            }
         }
     }
 }

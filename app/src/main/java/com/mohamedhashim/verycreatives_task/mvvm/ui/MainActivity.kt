@@ -1,4 +1,4 @@
-package com.mohamedhashim.verycreatives_task.mvvm.ui.main
+package com.mohamedhashim.verycreatives_task.mvvm.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

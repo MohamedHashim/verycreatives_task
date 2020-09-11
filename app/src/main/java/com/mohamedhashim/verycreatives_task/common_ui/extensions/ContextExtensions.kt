@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
+import com.mohamedhashim.verycreatives_task.common_ui.adapters.MovieFavouriteAdapter
 import com.mohamedhashim.verycreatives_task.common_ui.adapters.MoviesAdapter
 import com.mohamedhashim.verycreatives_task.common_ui.bindings.bindAdapterMovieList
 import com.mohamedhashim.verycreatives_task.mvvm.ui.main.MainViewModel
@@ -60,6 +61,15 @@ fun showFavMovies(
 ) {
     recyclerView.removeAllViewsInLayout()
     viewModel.moviesListLiveData = viewModel.favouriteMoviesLiveData
-    adapterMovieList.addMovieList(viewModel.favouriteMoviesList)
-    bindAdapterMovieList(recyclerView, viewModel.favouriteMoviesList)
+    adapterMovieList.addMovieList(viewModel.getFavouriteMovieList())
+    bindAdapterMovieList(recyclerView, viewModel.getFavouriteMovieList())
+}
+
+fun showFavouriteMovies(
+    recyclerView: RecyclerView,
+    viewModel: MainViewModel,
+    adapterMovieList: MovieFavouriteAdapter
+) {
+    adapterMovieList.addMovieList(viewModel.getFavouriteMovieList())
+    bindAdapterMovieList(recyclerView, viewModel.getFavouriteMovieList())
 }
